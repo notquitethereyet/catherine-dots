@@ -1,9 +1,9 @@
-@define-color base   #1e1e2e;
+@define-color base #1e1e2e;
 @define-color mantle #181825;
-@define-color crust  #11111b;
-@define-color crust2  rgba(17, 17, 27 ,0.5);
+@define-color crust #11111b;
+@define-color crust2 rgba(17, 17, 27, 0.5);
 
-@define-color text     #cdd6f4;
+@define-color text #cdd6f4;
 @define-color subtext0 #a6adc8;
 @define-color subtext1 #bac2de;
 
@@ -15,19 +15,19 @@
 @define-color overlay1 #7f849c;
 @define-color overlay2 #9399b2;
 
-@define-color blue      #89b4fa;
-@define-color lavender  #b4befe;
-@define-color sapphire  #74c7ec;
-@define-color sky       #89dceb;
-@define-color teal      #94e2d5;
-@define-color green     #a6e3a1;
-@define-color yellow    #f9e2af;
-@define-color peach     #fab387;
-@define-color maroon    #eba0ac;
-@define-color red       #f38ba8;
-@define-color mauve     #cba6f7;
-@define-color pink      #f5c2e7;
-@define-color flamingo  #f2cdcd;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color sapphire #74c7ec;
+@define-color sky #89dceb;
+@define-color teal #94e2d5;
+@define-color green #a6e3a1;
+@define-color yellow #f9e2af;
+@define-color peach #fab387;
+@define-color maroon #eba0ac;
+@define-color red #f38ba8;
+@define-color mauve #cba6f7;
+@define-color pink #f5c2e7;
+@define-color flamingo #f2cdcd;
 @define-color rosewater #f5e0dc;
 
 * {
@@ -113,32 +113,36 @@ button {
 }
 
 /* If workspaces is the leftmost module, reduce left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 2px;
 }
 
 #clock {
-  color: @text;
+    color: @text;
 }
 
 #custom-pacman {
-  color: @peach;
+    color: @peach;
 }
 
 #pulseaudio {
-  color: @mauve;
+    color: @mauve;
+}
+
+#backlight {
+    color: @mauve;
 }
 
 #pulseaudio.muted {
-  color: @surface2;
+    color: @surface2;
 }
 
 #network {
-  color: @blue;
+    color: @blue;
 }
 
 #network.disconnected {
-  color: @surface2;
+    color: @surface2;
 }
 
 #battery {
@@ -150,15 +154,15 @@ button {
 }
 
 #custom-power {
-  color: @maroon;
-  margin-right: 5px;
+    color: @maroon;
+    margin-right: 5px;
 }
 
-#keyboard-state > label {
+#keyboard-state>label {
     padding: 0 5px;
 }
 
-#keyboard-state > label.locked {
+#keyboard-state>label.locked {
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -167,7 +171,7 @@ button {
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 /* vim: ft=sass */
