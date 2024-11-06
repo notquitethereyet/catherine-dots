@@ -4,7 +4,7 @@
 HOME = "~"
 scrDir="${HOME}/.config/hypr/scripts/"
 confDir="${HOME}/.config/"  # Assuming config files are one level up from scripts
-roconf="${confDir}/rofi/config/launcher.rasi"  # Default fallback style
+roconf="${confDir}/rofi/config.rasi"  # Default fallback style
 
 # Set rofi scale default if it's not a valid number
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
