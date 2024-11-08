@@ -6,8 +6,11 @@
   font-family: Roboto Mono, monospace;
 }
 window {
-	background-color: alpha(@crust, 0.8);
+	background-color: alpha(@crust, 0.5);
 	/* background-color: transparent; */
+  /* background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;  */
 }
 .horizontal {
   padding: 100px 300px;
@@ -18,21 +21,23 @@ button {
 	border-radius: 4px;
   margin: 10px;
   color: @text;
-	background-color: alpha(@base, 0.08);
+	background-color: @base;
 	background-repeat: no-repeat;
 	background-position: center;
   background-size: 15%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 
 }
 
 button:active, button:hover {
-	background-color: alpha(currentColor, 0.1);
+	background-color: @flamingo;
 	outline-style: none;
+  color: @crust;
 }
 
 button:focus {
-  color: @blue;
+  color: @text;
+  background-color: @blue;
   background-size: 20%;
 }
 
