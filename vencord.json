@@ -5,7 +5,7 @@
         "autoUpdateNotification": true,
         "useQuickCss": true,
         "themeLinks": [
-            "https://raw.githubusercontent.com/fawni/dracula/main/BetterDiscord/dracula.theme.css"
+            "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
         ],
         "enabledThemes": [],
         "enableReactDevtools": false,
@@ -149,7 +149,9 @@
                 "transformStickers": true,
                 "transformCompoundSentence": true,
                 "enableStreamQualityBypass": true,
-                "useHyperLinks": true
+                "useHyperLinks": true,
+                "hyperLinkText": "{{NAME}}",
+                "disableEmbedPermissionCheck": false
             },
             "FakeProfileThemes": {
                 "enabled": false
@@ -182,9 +184,6 @@
             "GreetStickerPicker": {
                 "enabled": false
             },
-            "HideAttachments": {
-                "enabled": false
-            },
             "iLoveSpam": {
                 "enabled": false
             },
@@ -198,7 +197,7 @@
                 "invertScroll": true,
                 "nearestNeighbour": false,
                 "square": false,
-                "zoom": 2.325,
+                "zoom": 3.3999999999999995,
                 "size": 499.9119718309859,
                 "zoomSpeed": 0.5
             },
@@ -363,7 +362,8 @@
                 "memberList": true,
                 "voiceUsers": true,
                 "reactorsList": true,
-                "colorChatMessages": false
+                "colorChatMessages": false,
+                "pollResults": true
             },
             "SecretRingToneEnabler": {
                 "enabled": false
@@ -414,7 +414,41 @@
                 "enabled": false
             },
             "TextReplace": {
-                "enabled": true
+                "enabled": true,
+                "stringRules": [
+                    {
+                        "find": "https://x.com/",
+                        "replace": "https://stupidpenisx.com/",
+                        "onlyIfIncludes": ""
+                    },
+                    {
+                        "find": "https://instagram.com/",
+                        "replace": "https://instagramez.com/",
+                        "onlyIfIncludes": ""
+                    },
+                    {
+                        "find": "https://reddit.com/",
+                        "replace": "https://rxddit.com/",
+                        "onlyIfIncludes": ""
+                    },
+                    {
+                        "find": "https://pixiv.net/",
+                        "replace": "https://phixiv.net/",
+                        "onlyIfIncludes": ""
+                    },
+                    {
+                        "find": "",
+                        "replace": "",
+                        "onlyIfIncludes": ""
+                    }
+                ],
+                "regexRules": [
+                    {
+                        "find": "",
+                        "replace": "",
+                        "onlyIfIncludes": ""
+                    }
+                ]
             },
             "ThemeAttributes": {
                 "enabled": false
@@ -681,6 +715,15 @@
             },
             "DynamicImageModalAPI": {
                 "enabled": false
+            },
+            "FullUserInChatbox": {
+                "enabled": false
+            },
+            "IrcColors": {
+                "enabled": false
+            },
+            "HideMedia": {
+                "enabled": false
             }
         },
         "notifications": {
@@ -693,8 +736,9 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1730962804022
-        }
+            "settingsSyncVersion": 1745132969527
+        },
+        "eagerPatches": false
     },
     "quickCss": "\n/*hide gift,gif and sticker buttons in message box as long as discord is in english*/\n[aria-label=\"Send a gift\"], [aria-label=\"Open sticker picker\"],[aria-label=\"Open GIF picker\"]{\n  padding:0;\n  height:0;\n  width:0;\n  visibility: hidden;\n  opacity: 0;\n}\n\n\n/*move roleicon left*/\n[class*=\"roleIcon\"] {\n    float: left;\n    margin-left: 0rem;\n    margin-right: .25rem;\n}\n[class*=\"channelAppLauncher_df39bd\"] {\n  padding:0;\n  height:0;\n  width:0;\n  visibility: hidden;\n  opacity: 0;\n}\n\n/*Dashless channel names*/\n@font-face {\n    font-family: \"Twemoji Mozilla\";\n    src: url(\"https://vendicated.github.io/random-files/Twemoji.Mozilla.ttf\") format(\"truetype\");\n    unicode-range: U+1F1E6-1F1FF;\n}\n@font-face {\n    font-family: \"dashless\";\n    size-adjust: 100%;\n    src: url(\"https://vendicated.github.io/random-files/Dashless.woff2\") format(\"woff2\");\n    unicode-range: U+002D;\n}\n[data-list-item-id^=channels___]:not([role=button]),\n[class^=titleWrapper]>h1,\n[id^=\":r\"]>h1,\n[class^=resultChannel],\n[class^=channelNameContainer_],\n[class^=searchAnswer_],\n.channelWithIcon,\n[class^=emptyChannelIcon_]+h3,\n[class^=emptyChannelIcon_]~[class*=description_],\n[class^=browser_] [class*=channelText_],\n[class^=returnButton_] [class^=text-],\n[class^=placeholder][class*=slateTextArea],\n[class^=auditLog_] [class^=overflowEllipsis_] strong,\n.vc-permviewer-perms-title,\n[class^=headerChannelContainer_]>div {\n    font-family: \"Twemoji Mozilla\", \"dashless\", var(--font-primary)\n}\n\n/* preview links*/\n.anchor_af404b[title$=\")\"]::after {\n    font-size: 0.7rem;\n    content: \" (\" attr(href) \")\";\n    filter: grayscale(0.4);\n}\n\nimg[src*=\"315923287953637377\"]+img+h3>span>span[role=\"button\"] {\n    color:#bd93f9!important\n}\nimg[src*=\"315923287953637377\"]+span[role=\"button\"] {\n    color:#bd93f9!important\n}\nimg[src*=\"315923287953637377\"]+span+span[role=\"button\"] {\n    color:#bd93f9!important\n}"
 }
