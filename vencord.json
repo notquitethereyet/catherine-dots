@@ -5,7 +5,7 @@
         "autoUpdateNotification": true,
         "useQuickCss": true,
         "themeLinks": [
-            "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
+            "https://raw.githubusercontent.com/refact0r/midnight-discord/refs/heads/master/themes/flavors/midnight-catppuccin-mocha.theme.css"
         ],
         "enabledThemes": [],
         "enableReactDevtools": false,
@@ -736,7 +736,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1745132969527
+            "settingsSyncVersion": 1745272107922
         },
         "eagerPatches": false
     },

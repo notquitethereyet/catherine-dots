@@ -81,12 +81,13 @@
     }
   },
   "mpris": {
-		"player": "spotify",
-		"title-len": 50,
-		"justify": "center",
-		"tooltip": false,
-		"format": "<span foreground='#46c880'> </span> {artist} - {title}" 
-	},
+    "player": ["spotify", "cider"],
+    "ignored-players": ["firefox", "chromium", "brave", "chrome", "zen-browser"],
+    "title-len": 50,
+    "justify": "center",
+    "tooltip": false,
+    "format": "<span foreground='#46c880'> </span> {artist} - {title}"
+  },
   "backlight": {
     "format": "{icon}   {percent}%",
     "format-icons": [

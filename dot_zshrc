@@ -1,5 +1,5 @@
 source /home/quiet/.config/zsh/.zshrc
-export PATH="$HOME/.conda/bin:$PATH"
+
 export PATH="$HOME/.conda/bin:$PATH"
 
 # >>> conda initialize >>>
