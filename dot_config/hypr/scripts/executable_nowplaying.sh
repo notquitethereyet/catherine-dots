@@ -18,8 +18,8 @@ fi
 echo "$spotify_info"
 
 
-#!/bin/bash
+# #!/bin/bash
 
-song_info=$(playerctl metadata --player spotify --format '{{title}}     {{artist}}')
+# song_info=$(playerctl metadata --player spotify --format '{{title}}     {{artist}}')
 
-echo "$song_info" 
+# echo "$song_info" 
