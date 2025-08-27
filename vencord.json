@@ -130,9 +130,6 @@
             "Dearrow": {
                 "enabled": false
             },
-            "EmoteCloner": {
-                "enabled": true
-            },
             "Experiments": {
                 "enabled": false
             },
@@ -418,7 +415,7 @@
                 "stringRules": [
                     {
                         "find": "https://x.com/",
-                        "replace": "https://stupidpenisx.com/",
+                        "replace": "https://fxtwitter.com/",
                         "onlyIfIncludes": ""
                     },
                     {
@@ -724,6 +721,12 @@
             },
             "HideMedia": {
                 "enabled": false
+            },
+            "ExpressionCloner": {
+                "enabled": true
+            },
+            "DisableDeepLinks": {
+                "enabled": true
             }
         },
         "notifications": {
@@ -736,7 +739,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1745272107922
+            "settingsSyncVersion": 1751668321178
         },
         "eagerPatches": false
     },

@@ -81,7 +81,7 @@
     }
   },
   "mpris": {
-    "player": ["spotify", "cider"],
+    "player": ["spotify"],
     "ignored-players": ["firefox", "chromium", "brave", "chrome", "zen-browser"],
     "title-len": 50,
     "justify": "center",
