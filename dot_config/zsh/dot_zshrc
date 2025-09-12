@@ -5,7 +5,8 @@ ZSH=/usr/share/oh-my-zsh/
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # List of plugins used
-plugins=( git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete )
+# plugins=( git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting  zsh-autocomplete)
+plugins=( git sudo fast-syntax-highlighting zsh-autosuggestions )
 source $ZSH/oh-my-zsh.sh
 
 # Detect AUR wrapper
@@ -67,20 +68,30 @@ alias mkdir='mkdir -p'
 # fastfetch splash
 fastfetch
 
-# bun completions
-[ -s "/home/quiet/.bun/_bun" ] && source "/home/quiet/.bun/_bun"
-
 # pnpm
 export PNPM_HOME="/home/quiet/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
+# Task Master aliases added on 8/15/2025
+alias tm='task-master'
+alias taskmaster='task-master'
+
 
 # zoxide
 eval "$(zoxide init zsh)"
 
 # oh-my-posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+
+# carapace autocomplete
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 
 # Terminal settings
 export TERM=xterm-kitty

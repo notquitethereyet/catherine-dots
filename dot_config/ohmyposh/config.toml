@@ -7,7 +7,7 @@ final_space = true
   lavender = '#B4BEFE'
   os = '#ACB0BE'
   pink = '#F5C2E7'
-  red = '##f38ba8'
+  red = '#f38ba8'  # Corrected the color code from ## to #
   yellow = '#f9e2af'
 
 [secondary_prompt]
@@ -35,7 +35,7 @@ final_space = true
 
   [[blocks.segments]]
     style = 'plain'
-    template = '{{ .UserName }}@{{ .HostName }} '
+    template = ' {{ .UserName }}@{{ .HostName }} '
     foreground = 'p:blue'
     background = ''
     type = 'session'
@@ -51,6 +51,20 @@ final_space = true
       folder_icon = '....'
       home_icon = '~'
       style = 'full'
+
+  # --- I have added the Python segment here ---
+  [[blocks.segments]]
+    type = 'python'
+    style = 'plain'
+    template = '{{ if .Venv }}({{ .Venv }}) {{ end }}'
+    foreground = 'p:yellow'
+    background = ''
+    
+    [blocks.segments.properties]
+      display_mode = 'context' # only show in venv or when python files exist
+      venv_icon = ' '         # optional: nerd font icon
+
+  # -------------------------------------------
 
   [[blocks.segments]]
     style = 'plain'

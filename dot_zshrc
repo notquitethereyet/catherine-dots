@@ -1,13 +1,1 @@
 source /home/quiet/.config/zsh/.zshrc
-
-# pnpm
-export PNPM_HOME="/home/quiet/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Task Master aliases added on 8/15/2025
-alias tm='task-master'
-alias taskmaster='task-master'
