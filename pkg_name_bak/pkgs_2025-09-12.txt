@@ -1376,7 +1376,6 @@ wget
 which
 whois
 wildmidi
-windsurf
 wine
 winetricks
 wireless_tools
