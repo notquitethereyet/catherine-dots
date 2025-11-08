@@ -18,5 +18,10 @@ cp "$WALLPAPER_PATH" "$ORIGINAL_CACHE"
 # Using "magick" command for ImageMagick 7 to create a blurred version
 magick "$WALLPAPER_PATH" -blur 0x25 "$BLUR_CACHE"
 
-# Set the wallpaper with swww
-# swww img "$WALLPAPER_PATH"
+# Update swaybg backdrop with blurred wallpaper (if it exists)
+# This ensures the overview backdrop updates when waypaper changes the wallpaper
+if [ -f "$BLUR_CACHE" ]; then
+    pkill -x swaybg 2>/dev/null || true
+    sleep 0.2
+    swaybg -i "$BLUR_CACHE" -m fill &
+fi

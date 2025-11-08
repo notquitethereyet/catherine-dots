@@ -140,6 +140,9 @@ layout {
 
     struts {
     }
+
+    // Transparent background so backdrop wallpaper doesn't move with workspaces
+    background-color "transparent"
 }
 
 // System environment setup
@@ -190,6 +193,21 @@ animations {
     // slowdown 3.0
 }
 
+// Overview configuration
+// See https://github.com/YaLTeR/niri/wiki/Overview
+overview {
+    // Zoom level (0.25 = 4x smaller, default is around 0.33)
+    // zoom 0.25
+
+    // Backdrop color behind workspaces (optional, wallpaper will show through if transparent)
+    // backdrop-color "#1e1e2e"
+
+    // Disable workspace shadows for cleaner look with blurred backdrop
+    workspace-shadow {
+        off
+    }
+}
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
@@ -229,6 +247,15 @@ layer-rule {
     geometry-corner-radius 10
     }
 
+// Place swww wallpaper in normal workspace (not in backdrop)
+// swww-daemon stays for normal workspace
+
+// Place swaybg wallpaper in the overview backdrop (blurred version)
+layer-rule {
+    match namespace=r#"^wallpaper$"#
+    place-within-backdrop true
+}
+
 /-window-rule {
     match title="Firefox"
     open-on-workspace "c"
@@ -252,6 +279,17 @@ layer-rule {
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+}
+
+// Window opacity based on focus state
+window-rule {
+    match is-active=false
+    opacity 0.9
+}
+
+window-rule {
+    match is-focused=true
+    opacity 1.0
 }
 
 binds {
@@ -495,9 +533,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print hotkey-overlay-title="Screenshot: Screen" { screenshot-screen; }
-    Shift+Print hotkey-overlay-title="Screenshot: Selection" { screenshot; }
-    Alt+Print hotkey-overlay-title="Screenshot: Window" { screenshot-window; }
+    Mod+Shift+3 hotkey-overlay-title="Screenshot: Screen" { screenshot-screen; }
+    Mod+Shift+4 hotkey-overlay-title="Screenshot: Selection" { screenshot; }
+    Mod+Shift+5 hotkey-overlay-title="Screenshot: Window" { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

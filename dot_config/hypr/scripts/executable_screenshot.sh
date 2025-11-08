@@ -38,6 +38,7 @@ Usage: ./screenshot.sh <action>
         s  : Partial capture (select area)
         sf : Partial capture (frozen screen)
         m  : Capture focused monitor
+        w  : Capture focused window
 EOF
 }
 
@@ -54,6 +55,9 @@ sf) # Capture a selected area with a frozen screen
 	;;
 m) # Capture the focused monitor
 	grimblast copysave output "$temp_screenshot" && restore_shader && swappy -f "$temp_screenshot"
+	;;
+w) # Capture the focused window
+	grimblast copysave window "$temp_screenshot" && restore_shader && swappy -f "$temp_screenshot"
 	;;
 *) # Invalid option
 	print_error
