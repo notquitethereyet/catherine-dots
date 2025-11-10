@@ -16,6 +16,10 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
 
 input {
     keyboard {
@@ -150,7 +154,8 @@ spawn-sh-at-startup "systemctl --user import-environment &"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd &"
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-sh-at-startup "waybar -c /home/quiet/.config/waybar/niri.jsonc"
+// spawn-sh-at-startup "waybar -c /home/quiet/.config/waybar/niri.jsonc"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-sh-at-startup "$scrPath/wallpaper.sh"
 spawn-sh-at-startup "$scrPath/niri-backdrop.sh"
 spawn-at-startup "mako"
@@ -257,6 +262,12 @@ layer-rule {
     place-within-backdrop true
 }
 
+// Allow Noctalia to render a blurred overview wallpaper on the backdrop.
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}
+
 /-window-rule {
     match title="Firefox"
     open-on-workspace "c"
@@ -304,12 +315,17 @@ binds {
     Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
     Mod+E hotkey-overlay-title="Open File Manager" { spawn "dolphin"; }
     Mod+X hotkey-overlay-title="Open Code Editor" { spawn "cursor"; }
-    Mod+A hotkey-overlay-title="Open Launcher" { spawn-sh "$scrPath/rofilaunch.sh"; }
-    Mod+Backspace hotkey-overlay-title="Logout Menu" { spawn-sh "$scrPath/logout.sh"; }
+    // Mod+A hotkey-overlay-title="Open Launcher" { spawn-sh "$scrPath/rofilaunch.sh"; }
+    Mod+A hotkey-overlay-title="Open Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    // Mod+Backspace hotkey-overlay-title="Logout Menu" { spawn-sh "$scrPath/logout.sh"; }
+    Mod+Backspace hotkey-overlay-title="Logout Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Ctrl+Shift+Escape allow-inhibiting=false hotkey-overlay-title="System Monitor" { spawn-sh "$scrPath/sysmon.sh"; }
-    Mod+Y hotkey-overlay-title="Clipboard History" { spawn-sh "pkill -x rofi || $scrPath/cliphist.sh c"; }
+    // Mod+Y hotkey-overlay-title="Clipboard History" { spawn-sh "pkill -x rofi || $scrPath/cliphist.sh c"; }
+    Mod+Y hotkey-overlay-title="Clipboard History" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
     Mod+Shift+Y hotkey-overlay-title="Clipboard Manager" { spawn-sh "pkill -x rofi || $scrPath/cliphist.sh"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    // Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -556,5 +572,5 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Shift+O { power-off-monitors; }
 }
