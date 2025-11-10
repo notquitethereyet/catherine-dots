@@ -6,7 +6,7 @@ environment {
     TERM "kitty"
     EDITOR "micro"
     GDK_SCALE "1"
-    scrPath "/home/quiet/.config/niri/scripts"
+    scrPath "/home/quiet/.local/scripts"
     MOZ_ENABLE_WAYLAND "1"
     QT_QPA_PLATFORM "wayland;xcb"
     QT_QPA_PLATFORMTHEME "qt6ct"
@@ -150,8 +150,9 @@ spawn-sh-at-startup "systemctl --user import-environment &"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd &"
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-sh-at-startup "waybar"
+spawn-sh-at-startup "waybar -c /home/quiet/.config/waybar/niri.jsonc"
 spawn-sh-at-startup "$scrPath/wallpaper.sh"
+spawn-sh-at-startup "$scrPath/niri-backdrop.sh"
 spawn-at-startup "mako"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet" "--indicator"
@@ -299,6 +300,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open kitty" { spawn "kitty"; }
+    Mod+Shift+P hotkey-overlay-title="Color Picker" { spawn-sh "hyprpicker -a"; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
     Mod+E hotkey-overlay-title="Open File Manager" { spawn "dolphin"; }
     Mod+X hotkey-overlay-title="Open Code Editor" { spawn "cursor"; }

@@ -7,7 +7,7 @@
 
 {
     "label" : "logout",
-    "action" : "${HOME}/.config/niri/scripts/compositor-logout.sh",
+    "action" : "${HOME}/.local/scripts/compositor-logout.sh",
     "text" : "Logout",
     "keybind" : "e"
 }

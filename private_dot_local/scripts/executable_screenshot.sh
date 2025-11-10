@@ -57,7 +57,7 @@ m) # Capture the focused monitor
 	grimblast copysave output "$temp_screenshot" && restore_shader && swappy -f "$temp_screenshot"
 	;;
 w) # Capture the focused window
-	grimblast copysave window "$temp_screenshot" && restore_shader && swappy -f "$temp_screenshot"
+	grimblast copysave active "$temp_screenshot" && restore_shader && swappy -f "$temp_screenshot"
 	;;
 *) # Invalid option
 	print_error
