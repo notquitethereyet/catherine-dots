@@ -429,7 +429,7 @@
                         "onlyIfIncludes": ""
                     },
                     {
-                        "find": "https://pixiv.net/",
+                        "find": "https://www.pixiv.net/",
                         "replace": "https://phixiv.net/",
                         "onlyIfIncludes": ""
                     },
@@ -588,7 +588,8 @@
             "BetterSettings": {
                 "enabled": true,
                 "disableFade": true,
-                "eagerLoad": true
+                "eagerLoad": true,
+                "organizeMenu": true
             },
             "CopyEmojiMarkdown": {
                 "enabled": false
@@ -618,7 +619,8 @@
                 "enabled": true,
                 "latency": 2,
                 "detectDiscordKotlin": true,
-                "showMillis": false
+                "showMillis": false,
+                "ignoreSelf": false
             },
             "UserSettingsAPI": {
                 "enabled": true
@@ -727,6 +729,12 @@
             },
             "DisableDeepLinks": {
                 "enabled": true
+            },
+            "CopyStickerLinks": {
+                "enabled": false
+            },
+            "ImageFilename": {
+                "enabled": false
             }
         },
         "notifications": {
@@ -739,7 +747,7 @@
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": false,
-            "settingsSyncVersion": 1751668321178
+            "settingsSyncVersion": 1762843150867
         },
         "eagerPatches": false
     },

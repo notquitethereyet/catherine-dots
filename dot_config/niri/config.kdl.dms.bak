@@ -142,55 +142,45 @@ layout {
     struts {
     }
 }
-/-layer-rule {
+layer-rule {
     match namespace="^quickshell$"
     place-within-backdrop true
 }
 
-/-layer-rule {
+layer-rule {
     match namespace="dms:blurwallpaper"
     place-within-backdrop true
 }
-
-// Set the overview wallpaper on the backdrop.
-layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
-}
-
 
 overview {
     workspace-shadow {
         off
     }
 }
-spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
-spawn-at-startup "mako"
-// spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
-// spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+// Add lines like this to spawn processes at startup.
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient to use.
+// See the binds section below for more spawn examples.
+// This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-
+spawn-at-startup "dms" "run"
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 // spawn-sh-at-startup "$scrPath/wallpaper.sh"
 // spawn-sh-at-startup "$scrPath/niri-backdrop.sh"
 environment {
   XDG_CURRENT_DESKTOP "niri"
-  XDG_SESSION_TYPE "wayland"
   QT_QPA_PLATFORM "wayland"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
-  QT_QPA_PLATFORMTHEME "qt5ct"
-  QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
+  QT_QPA_PLATFORMTHEME "qt6ct"
   // QT_QPA_PLATFORMTHEME "gtk3" 
   // QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+  QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
   TERMINAL "kitty"
   XDG_MENU_PREFIX "arch-"
   scrPath "/home/quiet/.local/scripts"
   GBM_BACKEND "nvidia-drm"
   __GLX_VENDOR_LIBRARY_NAME "nvidia"
   LIBVA_DRIVER_NAME "nvidia"
-  XDG_MENU_PREFIX "arch-"
-  TERM "kitty"
-  EDITOR "micro"
 }
 hotkey-overlay {
     skip-at-startup
@@ -244,7 +234,7 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
-    geometry-corner-radius 4
+    geometry-corner-radius 12
     clip-to-geometry true
 }
 window-rule {
@@ -285,19 +275,20 @@ window-rule {
     open-floating true
 }
 window-rule {
-    geometry-corner-radius 4
+    geometry-corner-radius 12
     clip-to-geometry true
 }
 binds {
     // === System & Overview ===
-    // Mod+O { spawn "niri" "msg" "action" "toggle-overview"; }
+    Mod+D { spawn "niri" "msg" "action" "toggle-overview"; }
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // === Application Launchers ===
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
-        spawn-sh "qs -c noctalia-shell ipc call launcher toggle";
+        spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
     Mod+A hotkey-overlay-title="Open Launcher" { spawn-sh "$scrPath/rofilaunch.sh"; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
@@ -305,45 +296,51 @@ binds {
     Mod+X hotkey-overlay-title="Open Code Editor" { spawn "cursor"; }
     Mod+Shift+P hotkey-overlay-title="Color Picker" { spawn-sh "hyprpicker -a"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" {
-        spawn-sh "qs -c noctalia-shell ipc call launcher clipboard";
+        spawn "dms" "ipc" "call" "clipboard" "toggle";
+    }
+    Mod+M hotkey-overlay-title="Task Manager" {
+        spawn "dms" "ipc" "call" "processlist" "toggle";
     }
     Mod+Comma hotkey-overlay-title="Settings" {
-        spawn-sh "qs -c noctalia-shell ipc call settings toggle";
+        spawn "dms" "ipc" "call" "settings" "toggle";
     }
-
-    Mod+N hotkey-overlay-title="Notification Center" { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
+    Mod+Y hotkey-overlay-title="Browse Wallpapers" {
+        spawn "dms" "ipc" "call" "dankdash" "wallpaper";
+    }
+    Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
     Mod+Backspace hotkey-overlay-title="Logout Menu" { spawn-sh "$scrPath/logout.sh"; }
     Ctrl+Shift+Escape allow-inhibiting=false hotkey-overlay-title="System Monitor" { spawn-sh "$scrPath/sysmon.sh"; }
 
     // === Security ===
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
-        spawn-sh "qs -c noctalia-shell ipc call lockScreen lock";
+        spawn "dms" "ipc" "call" "lock" "lock";
     }
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" {
-        spawn-sh "$scrPath/sysmon.sh";
+        spawn "dms" "ipc" "call" "processlist" "toggle";
     }
 
     // === Audio Controls ===
     XF86AudioRaiseVolume allow-when-locked=true {
-        spawn-sh "qs -c noctalia-shell ipc call volume increase";
+        spawn "dms" "ipc" "call" "audio" "increment" "3";
     }
     XF86AudioLowerVolume allow-when-locked=true {
-        spawn-sh "qs -c noctalia-shell ipc call volume decrease";
+        spawn "dms" "ipc" "call" "audio" "decrement" "3";
     }
     XF86AudioMute allow-when-locked=true {
-        spawn-sh "qs -c noctalia-shell ipc call volume muteOutput";
+        spawn "dms" "ipc" "call" "audio" "mute";
     }
     XF86AudioMicMute allow-when-locked=true {
-        spawn-sh "qs -c noctalia-shell ipc call volume muteInput";
+        spawn "dms" "ipc" "call" "audio" "micmute";
     }
 
     // === Brightness Controls ===
     XF86MonBrightnessUp allow-when-locked=true {
-        spawn-sh "qs -c noctalia-shell ipc call brightness increase";
+       spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
     }
     XF86MonBrightnessDown allow-when-locked=true {
-        spawn-sh "qs -c noctalia-shell ipc call brightness decrease";
+       spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
     }
 
     // === Window Management ===
@@ -479,7 +476,7 @@ binds {
     Mod+Shift+4 hotkey-overlay-title="Screenshot: Selection" { screenshot; }
     Mod+Shift+5 hotkey-overlay-title="Screenshot: Window" { screenshot-window; }
     // === System Controls ===
-    Mod+Escape allow-inhibiting=false { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+O { power-off-monitors; }
 }
 debug {
