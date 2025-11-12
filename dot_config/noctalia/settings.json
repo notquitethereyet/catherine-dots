@@ -15,7 +15,7 @@
         "cavaFrameRate": 30,
         "mprisBlacklist": [
         ],
-        "preferredPlayer": "spotify",
+        "preferredPlayer": "",
         "visualizerQuality": "high",
         "visualizerType": "linear",
         "volumeOverdrive": false,
@@ -320,12 +320,12 @@
             {
                 "directory": "/home/quiet/Pictures/wallpapers",
                 "name": "DP-1",
-                "wallpaper": "/home/quiet/Pictures/wallpapers/115801713_p27.png"
+                "wallpaper": "/home/quiet/Pictures/wallpapers/104694494_p3.jpg"
             },
             {
                 "directory": "/home/quiet/Pictures/wallpapers",
                 "name": "DP-2",
-                "wallpaper": "/home/quiet/Pictures/wallpapers/115801713_p27.png"
+                "wallpaper": "/home/quiet/Pictures/wallpapers/104694494_p3.jpg"
             }
         ],
         "overviewEnabled": false,
