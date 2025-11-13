@@ -273,7 +273,7 @@ window-rule {
 }
 window-rule {
     match is-active=false
-    opacity 0.9
+    opacity 0.95
 }
 window-rule {
     match is-focused=true
