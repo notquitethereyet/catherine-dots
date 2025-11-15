@@ -167,9 +167,8 @@ overview {
 spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 spawn-at-startup "mako"
-// spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
-// spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 
 // spawn-sh-at-startup "$scrPath/wallpaper.sh"
 // spawn-sh-at-startup "$scrPath/niri-backdrop.sh"

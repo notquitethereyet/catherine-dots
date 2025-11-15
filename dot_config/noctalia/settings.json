@@ -1,9 +1,8 @@
 {
     "appLauncher": {
-        "backgroundOpacity": 1,
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
-        "enableClipboardHistory": false,
+        "enableClipboardHistory": true,
         "pinnedExecs": [
         ],
         "position": "center",
@@ -266,7 +265,35 @@
         "videoCodec": "h264",
         "videoSource": "portal"
     },
-    "settingsVersion": 21,
+    "sessionMenu": {
+        "countdownDuration": 10000,
+        "enableCountdown": true,
+        "position": "center",
+        "powerOptions": [
+            {
+                "action": "lock",
+                "enabled": true
+            },
+            {
+                "action": "suspend",
+                "enabled": true
+            },
+            {
+                "action": "reboot",
+                "enabled": true
+            },
+            {
+                "action": "logout",
+                "enabled": true
+            },
+            {
+                "action": "shutdown",
+                "enabled": true
+            }
+        ],
+        "showHeader": true
+    },
+    "settingsVersion": 22,
     "setupCompleted": true,
     "templates": {
         "alacritty": false,
@@ -297,6 +324,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "DejaVu Sans Mono",
         "fontFixedScale": 1,
+        "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "settingsPanelAttachToBar": false,
         "tooltipsEnabled": true
@@ -308,16 +336,17 @@
         "enabled": true,
         "fillColor": "#000000",
         "fillMode": "crop",
+        "hideWallpaperFilenames": false,
         "monitors": [
             {
                 "directory": "/home/quiet/Pictures/wallpapers",
                 "name": "DP-1",
-                "wallpaper": "/home/quiet/Pictures/wallpapers/104694494_p3.jpg"
+                "wallpaper": "/home/quiet/Pictures/wallpapers/133074580_p0.jpg"
             },
             {
                 "directory": "/home/quiet/Pictures/wallpapers",
                 "name": "DP-2",
-                "wallpaper": "/home/quiet/Pictures/wallpapers/104694494_p3.jpg"
+                "wallpaper": "/home/quiet/Pictures/wallpapers/133074580_p0.jpg"
             }
         ],
         "overviewEnabled": false,

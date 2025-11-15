@@ -1,0 +1,7 @@
+[config]
+
+# Rofi theme template
+[templates.rofi]
+input_path = "~/.config/noctalia/templates/rofi-theme.rasi"
+output_path = "~/.config/rofi/theme.rasi"
+

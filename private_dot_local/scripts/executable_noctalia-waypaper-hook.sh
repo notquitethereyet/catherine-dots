@@ -38,3 +38,7 @@ if [[ -n "$WALLPAPER_PATH" && -f "$WALLPAPER_PATH" ]]; then
 	waypaper --wallpaper "$WALLPAPER_PATH"
 fi
 
+# Regenerate rofi theme when colors change (wallpaper colors trigger color regeneration)
+sleep 0.5  # Wait for colors.json to be updated
+~/.config/niri/generate-rofi-theme.sh
+
