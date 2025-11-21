@@ -167,6 +167,7 @@ overview {
 spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 spawn-at-startup "mako"
+spawn-at-startup "fcitx5" "-d"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 
@@ -354,14 +355,14 @@ binds {
     Mod+W { toggle-column-tabbed-display; }
 
     // === Focus Navigation ===
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-or-workspace-down; }
-    Mod+K     { focus-window-or-workspace-up; }
-    Mod+L     { focus-column-right; }
+    Mod+Left  { focus-monitor-left; }
+    Mod+Down  { focus-monitor-down; }
+    Mod+Up    { focus-monitor-up; }
+    Mod+Right { focus-monitor-right; }
+    Mod+H     { focus-monitor-left; }
+    Mod+J     { focus-monitor-down; }
+    Mod+K     { focus-monitor-up; }
+    Mod+L     { focus-monitor-right; }
 
     // === Window Movement ===
     Mod+Ctrl+Left  { move-column-left; }
@@ -379,15 +380,15 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    // === Monitor Navigation ===
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+    // === Column/Window Navigation ===
+    Mod+Shift+Left  { focus-column-left; }
+    Mod+Shift+Down  { focus-window-down; }
+    Mod+Shift+Up    { focus-window-up; }
+    Mod+Shift+Right { focus-column-right; }
+    Mod+Shift+H     { focus-column-left; }
+    Mod+Shift+J     { focus-window-or-workspace-down; }
+    Mod+Shift+K     { focus-window-or-workspace-up; }
+    Mod+Shift+L     { focus-column-right; }
 
     // === Move to Monitor ===
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
