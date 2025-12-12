@@ -165,9 +165,11 @@ overview {
     }
 }
 spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+// spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "mako"
-spawn-at-startup "fcitx5" "-d"
+// spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "fcitx5"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 
@@ -188,9 +190,11 @@ environment {
   GBM_BACKEND "nvidia-drm"
   __GLX_VENDOR_LIBRARY_NAME "nvidia"
   LIBVA_DRIVER_NAME "nvidia"
-  XDG_MENU_PREFIX "arch-"
   TERM "kitty"
   EDITOR "micro"
+  GTK_IM_MODULE "fcitx"
+  QT_IM_MODULE "fcitx"
+  XMODIFIERS "@im=fcitx"
 }
 hotkey-overlay {
     skip-at-startup
@@ -267,6 +271,7 @@ window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     match app-id="Alacritty"
     match app-id="zen"
+    match app-id="brave"
     match app-id="com.mitchellh.ghostty"
     match app-id="kitty"
     draw-border-with-background false
@@ -300,7 +305,7 @@ binds {
         spawn-sh "qs -c noctalia-shell ipc call launcher toggle";
     }
     Mod+A hotkey-overlay-title="Open Launcher" { spawn-sh "$scrPath/rofilaunch.sh"; }
-    Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
+    Mod+B hotkey-overlay-title="Open Browser" { spawn "brave"; }
     Mod+E hotkey-overlay-title="Open File Manager" { spawn "dolphin"; }
     Mod+X hotkey-overlay-title="Open Code Editor" { spawn "cursor"; }
     Mod+Shift+P hotkey-overlay-title="Color Picker" { spawn-sh "hyprpicker -a"; }
@@ -359,10 +364,10 @@ binds {
     Mod+Down  { focus-monitor-down; }
     Mod+Up    { focus-monitor-up; }
     Mod+Right { focus-monitor-right; }
-    Mod+H     { focus-monitor-left; }
-    Mod+J     { focus-monitor-down; }
-    Mod+K     { focus-monitor-up; }
-    Mod+L     { focus-monitor-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
+    Mod+L     { focus-column-right; }
 
     // === Window Movement ===
     Mod+Ctrl+Left  { move-column-left; }

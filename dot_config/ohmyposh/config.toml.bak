@@ -1,4 +1,4 @@
-version = 4
+version = 3
 final_space = true
 
 [palette]
@@ -7,7 +7,7 @@ final_space = true
   lavender = '#B4BEFE'
   os = '#ACB0BE'
   pink = '#F5C2E7'
-  red = '#f38ba8'
+  red = '#f38ba8'  # Corrected the color code from ## to #
   yellow = '#f9e2af'
 
 [secondary_prompt]
@@ -27,46 +27,77 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
+    style = 'plain'
     template = '{{.Icon}} '
     foreground = 'p:os'
+    background = ''
     type = 'os'
-    style = 'plain'
 
   [[blocks.segments]]
+    style = 'plain'
     template = ' {{ .UserName }}@{{ .HostName }} '
     foreground = 'p:blue'
+    background = ''
     type = 'session'
-    style = 'plain'
 
   [[blocks.segments]]
+    style = 'plain'
     template = '{{ .Path }} '
     foreground = 'p:pink'
     background = 'transparent'
     type = 'path'
-    style = 'plain'
 
+    [blocks.segments.properties]
+      folder_icon = '....'
+      home_icon = '~'
+      style = 'full'
+
+  # --- I have added the Python segment here ---
   [[blocks.segments]]
-    template = '{{ if .Venv }}({{ .Venv }}) {{ end }}'
-    foreground = 'p:yellow'
     type = 'python'
     style = 'plain'
+    template = '{{ if .Venv }}({{ .Venv }}) {{ end }}'
+    foreground = 'p:yellow'
+    background = ''
+    
+    [blocks.segments.properties]
+      display_mode = 'context' # only show in venv or when python files exist
+      venv_icon = ' '         # optional: nerd font icon
+
+  # -------------------------------------------
 
   [[blocks.segments]]
+    style = 'plain'
     template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <p:blue>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
     foreground = 'p:lavender'
+    background = ''
     type = 'git'
-    style = 'plain'
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      cherry_pick_icon = ' '
+      commit_icon = ' '
+      fetch_status = true
+      fetch_upstream_icon = false
+      merge_icon = ' '
+      no_commits_icon = ' '
+      rebase_icon = ' '
+      revert_icon = ' '
+      tag_icon = ' '
 
 [[blocks]]
   type = 'rprompt'
   overflow = 'hidden'
 
   [[blocks.segments]]
+    style = 'plain'
     template = '{{ .FormattedMs }}'
     foreground = 'p:yellow'
     background = 'transparent'
     type = 'executiontime'
-    style = 'plain'
+
+    [blocks.segments.properties]
+      threshold = 500
 
 [[blocks]]
   type = 'prompt'
@@ -74,8 +105,9 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
+    style = 'plain'
     template = '❯ '
     foreground = 'p:pink'
+    background = ''
     type = 'text'
-    style = 'plain'
     foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if gt .Code 0}}p:pink{{end}}']
