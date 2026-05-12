@@ -11,11 +11,13 @@ NIconButton {
   property ShellScreen screen
   property string widgetId: ""
   property string section: ""
+  property int sectionWidgetIndex: -1
+  property int sectionWidgetsCount: 0
 
   baseSize: Style.getCapsuleHeightForScreen(screen?.name)
   applyUiScale: false
   icon: "keyboard"
-  tooltipText: pluginApi?.tr("keybind-cheatsheet.barwidget.tooltip") || "Keybind Cheatsheet"
+  tooltipText: pluginApi?.tr("barwidget.tooltip")
   tooltipDirection: BarService.getTooltipDirection(screen?.name)
   customRadius: Style.radiusL
 
@@ -34,12 +36,12 @@ NIconButton {
 
     model: [
       {
-        "label": "Open Cheatsheet",
+        "label": pluginApi?.tr("barwidget.open"),
         "action": "open-panel",
         "icon": "keyboard"
       },
       {
-        "label": "Plugin Settings",
+        "label": pluginApi?.tr("barwidget.settings"),
         "action": "plugin-settings",
         "icon": "settings"
       },
