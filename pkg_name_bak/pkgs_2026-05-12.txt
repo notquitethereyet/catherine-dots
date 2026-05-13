@@ -75,6 +75,7 @@ btop
 btrfs-assistant
 btrfs-progs
 bubblewrap
+bun
 bzip2
 c-ares
 ca-certificates
