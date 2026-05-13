@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.74.0",
-  "defaultProvider": "zai",
-  "defaultModel": "glm-5.1",
+  "defaultProvider": "opencode",
+  "defaultModel": "big-pickle",
   "defaultThinkingLevel": "medium",
   "hideThinkingBlock": false,
   "enabledModels": [
@@ -10,6 +10,24 @@
   ],
   "packages": [
     "npm:@tintinweb/pi-subagents",
-    "npm:@tintinweb/pi-tasks"
-  ]
+    "npm:pi-rewind-hook",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@juicesharp/rpiv-i18n",
+    "npm:pi-lens",
+    "npm:@juicesharp/rpiv-todo",
+    {
+      "source": "git:github.com/tomsej/pi-ext",
+      "extensions": [
+        "extensions/custom-footer/custom-footer.ts",
+        "extensions/tool-pills/index.ts",
+        "extensions/review/review.ts",
+        "extensions/pi-sem/index.ts"
+      ],
+      "skills": [],
+      "themes": [
+        "themes/catppuccin-mocha.json"
+      ]
+    }
+  ],
+  "theme": "catppuccin-mocha"
 }
