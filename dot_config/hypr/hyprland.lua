@@ -329,6 +329,7 @@ hl.bind(mainMod .. " + CTRL + F",     hl.dsp.layout("fit active"))
 hl.bind(mainMod .. " + SHIFT + I",    hl.dsp.layout("inhibit_scroll"))
 
 -- 16. Mouse
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 --------------------------------
