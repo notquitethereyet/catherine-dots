@@ -6,3 +6,15 @@ export PATH="/home/quiet/.bun/bin:$PATH"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/quiet/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+export JAVA_HOME=/opt/android-studio/jbr
+
+# bun completions
+[ -s "/home/quiet/.bun/_bun" ] && source "/home/quiet/.bun/_bun"
