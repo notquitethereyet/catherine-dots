@@ -321,6 +321,8 @@ hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.layout("colresize -conf"), { repea
 hl.bind(mainMod .. " + SHIFT + equal", hl.dsp.layout("colresize +conf"), { repeating = true })
 
 -- 15. Scrolling column management (niri-style)
+hl.bind(mainMod .. " + comma",  hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
 hl.bind(mainMod .. " + bracketleft",  hl.dsp.layout("consume_or_expel prev"))
 hl.bind(mainMod .. " + bracketright", hl.dsp.layout("consume_or_expel next"))
 hl.bind(mainMod .. " + R",            hl.dsp.layout("colresize +conf"))
