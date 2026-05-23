@@ -1,5 +1,6 @@
-font-family = MesloLGLDZ Nerd Font Mono
+font-family = MesloLGLDZ Nerd Font
 font-size = 12
+grapheme-width-method = legacy
 
 window-padding-x = 12
 window-padding-y = 12
